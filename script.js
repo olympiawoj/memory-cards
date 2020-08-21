@@ -75,6 +75,33 @@ function updateCurrentText(){
     currentEl.innerText = `${currentActiveCard + 1}/${cardsEl.length}`
 }
 
-
 createCards();
 
+// Event listeners
+nextBtn.addEventListener('click', ()=> {
+    //classList.add adds the class, className is overriding the class
+    cardsEl[currentActiveCard].className = 'card left'
+
+    currentActiveCard = currentActiveCard + 1
+
+    if(currentActiveCard > cardsEl.length - 1){
+        currentActiveCard = cardsEl.length - 1
+    }
+    cardsEl[currentActiveCard].className = 'card active';
+
+    updateCurrentText();
+})
+
+prevBtn.addEventListener('click', ()=> {
+    //classList.add adds the class, className is overriding the class
+    cardsEl[currentActiveCard].className = 'card right'
+
+    currentActiveCard = currentActiveCard - 1
+   
+    if(currentActiveCard < 0){
+        currentActiveCard = 0
+    }
+    cardsEl[currentActiveCard].className = 'card active';
+
+    updateCurrentText();
+})
